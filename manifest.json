@@ -1,0 +1,20 @@
+{
+  "name": "Google Shortcuts Extension (Goose)",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Keyboard shortcuts for Google Search.",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.google.com/*",
+        "*://www.google.com.au/*"
+      ],
+      "css": ["goosestyle.css"],
+      "js": [
+        // "jquery.js", 
+        "goose.js"
+      ]
+    }
+  ]
+}
