@@ -1,6 +1,9 @@
 // Goose - Google Search Keyboard Shortcuts
 // Simon Raik-Alen.
 
+//$(document).ready(showShortCuts);
+showShortCuts();
+
 // Listen for keypresses
 window.onkeypress = function(evt) {
 	var evt  = (evt) ? evt : ((event) ? event : null);
@@ -57,4 +60,13 @@ function removeSearchBy() {
 	if (existingTimeSearch > -1) {
 		document.location.href = href.substring(0, existingTimeSearch) + href.substring(existingTimeSearch+10);
 	}
+}
+
+function showShortCuts() {
+	$("a:contains('Past hour')").text("Past hour (ctrl-H)");
+	$("a:contains('Past week')").text("Past week (ctrl-W)");
+	$("a:contains('Past year')").text("Past year (ctrl-Y)");
+	$("a:contains('Past month')").text("Past month (ctrl-M)");
+	$("a:contains('Any time')").text("Any time (ctrl-A)");
+	$("a:contains('Past 24 hours')").text("Past 24 hours (ctrl-D)");
 }

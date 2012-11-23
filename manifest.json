@@ -3,7 +3,7 @@
   "version": "1.0",
   "manifest_version": 2,
   "description": "Keyboard shortcuts for Google Search.",
-
+  "icons": {"48": "images/icon40.png"},
   "content_scripts": [
     {
       "matches": [
@@ -12,7 +12,7 @@
       ],
       "css": ["goosestyle.css"],
       "js": [
-        // "jquery.js", 
+        "jquery-1.8.3.min.js", 
         "goose.js"
       ]
     }
