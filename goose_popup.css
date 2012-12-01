@@ -1,0 +1,12 @@
+
+body {
+	background-image:url('images/icon40.png');
+	background-repeat:no-repeat;
+}
+
+button {
+    // border: 1px solid #eee;
+    background: #ddd;
+    width: 80px;
+ }
+

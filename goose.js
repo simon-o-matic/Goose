@@ -1,4 +1,4 @@
-// Goose - Google Search Keyboard Shortcuts
+// Goose - Google Search Keyboard Shortcuts Extension
 // Simon Raik-Alen.
 
 //$(document).ready(showShortCuts);
@@ -70,3 +70,18 @@ function showShortCuts() {
 	$("a:contains('Any time')").text("Any time (ctrl-A)");
 	$("a:contains('Past 24 hours')").text("Past 24 hours (ctrl-D)");
 }
+
+// Listen for a message from the popup specifying which search to run
+chrome.extension.onMessage.addListener(
+  	function(request) {
+	    searchBy(request.search);
+	}
+);
+
+
+function blurt() {
+	console.log("BLURTING OUT!");
+
+	return 77;
+}
+
