@@ -1,10 +1,11 @@
 // Goose - Google Search Keyboard Shortcuts Extension
-// Simon Raik-Alen.
+// Copyright (c) 2012 Simon Raik-Alen.
 
-//$(document).ready(showShortCuts);
+// On first load inject the shortcut key descriptions
 showShortCuts();
 
-// Listen for keypresses
+// Register a listener for keypresses.
+// TODO: make this browser/platform portable
 window.onkeypress = function(evt) {
 	var evt  = (evt) ? evt : ((event) ? event : null);
 	var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
@@ -44,15 +45,17 @@ function searchBy(searchTime) {
 			// toggle
 			removeSearchBy();
 		} else {
-			// replace
+			// perform a new search replacing the old search term with the new 
+			// NOTE: could this rather generate a click event?
 			document.location.href = href.substring(0, existingTimeSearch) + href.substring(existingTimeSearch+10) + "&tbs=qdr:" + searchTime;
 		}
 	} else {
-		// its new so add to end
+		// its a first time search so add the parameters to end of the url
 		document.location.href += "&tbs=qdr:" + searchTime;
 	}
 }
 
+// undo a search, similar to doing an "any time" search
 function removeSearchBy() {
 	console.log("removing search by time");
 	var href = document.location.href;
@@ -62,6 +65,7 @@ function removeSearchBy() {
 	}
 }
 
+// inject short cut keys into the code
 function showShortCuts() {
 	$("a:contains('Past hour')").text("Past hour (ctrl-H)");
 	$("a:contains('Past week')").text("Past week (ctrl-W)");
@@ -78,10 +82,12 @@ chrome.extension.onMessage.addListener(
 	}
 );
 
+// When the hash changes it means an ajax call has taken place to refine the search
+// and so we need to re-insert the short cut keystrokes.
+$(window).bind('hashchange', function() {
+	console.log("hash");
+	showShortCuts();
 
-function blurt() {
-	console.log("BLURTING OUT!");
-
-	return 77;
-}
+	checkForMovies();
+});
 

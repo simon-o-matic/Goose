@@ -3,8 +3,6 @@ function checkForGoogleUrl(tabId, changeInfo, tab) {
 	if (tab.url.indexOf('www.google.com') > -1) {
 		console.log("showing page action on tab " + tabId);
 	    chrome.pageAction.show(tabId);
-
-	    // TODO check for other page types here
 	}
 };
 
